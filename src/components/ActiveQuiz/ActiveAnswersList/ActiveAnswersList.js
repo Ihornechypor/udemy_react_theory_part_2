@@ -1,0 +1,19 @@
+import React from 'react'
+import classes from './ActiveAnswersList.module.css'
+import ActiveAnswersItem from './ActiveAnswersItem/ActiveAnswersItem'
+
+
+const ActiveAnswersList = props => (
+    <ul className={classes.ActiveAnswersList}>
+        {props.listAnswers.map((answer,index)=>{
+            return (
+                <ActiveAnswersItem
+                    key={index}
+                    ActiveAnswers={answer}
+                />
+            )
+        })}
+    </ul>
+)
+
+export default ActiveAnswersList
