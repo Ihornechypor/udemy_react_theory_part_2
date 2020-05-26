@@ -7,14 +7,21 @@ class Quiz extends Component {
     state = {
         quiz: [
             {
+                listQuestion: 'some question?',
+                listAnswersRightId: 3,
                 listAnswers: [
-                    {text: 'q1'},
-                    {text: 'q2'},
-                    {text: 'q3'},
-                    {text: 'q4'}
+                    {text: 'q1', id: 1},
+                    {text: 'q2', id: 2},
+                    {text: 'q3', id: 3},
+                    {text: 'q4', id: 4}
                 ]
             }
         ]
+    }
+
+    onListAnswerClick = (listAnswersId) =>{
+        console.log(listAnswersId)
+
     }
 
     render(){
@@ -26,7 +33,10 @@ class Quiz extends Component {
                     </h2>
                     <ActiveQuiz
                         listAnswers={this.state.quiz[0].listAnswers}
+                        listQuestion={this.state.quiz[0].listQuestion}
+                        onListAnswerClick={this.onListAnswerClick}
                     />
+                
                 </div>
             </div>
         )
