@@ -7,13 +7,13 @@ const ActiveQuiz = props => (
         <p className={classes.ActiveQuizQuestion}>
             <span>
                 <b>
-                    2.&nbsp;
+                    {props.listAnswersNumber}.&nbsp;
                 </b>
                 {props.listQuestion}
             </span>
             
             <small>
-                4 of 12
+                {props.listAnswersNumber} of {props.listAnswersLen}
             </small>
         </p>
         <ActiveAnswersList
