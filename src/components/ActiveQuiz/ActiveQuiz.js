@@ -2,6 +2,7 @@ import React from 'react'
 import classes from './ActiveQuiz.module.css'
 import ActiveAnswersList from './ActiveAnswersList/ActiveAnswersList'
 
+
 const ActiveQuiz = props => (
     <div className={classes.ActiveQuiz}>
         <p className={classes.ActiveQuizQuestion}>
@@ -16,7 +17,9 @@ const ActiveQuiz = props => (
                 {props.listAnswersNumber} of {props.listAnswersLen}
             </small>
         </p>
+        
         <ActiveAnswersList
+            ckickedAnswerState={props.ckickedAnswerState}
             listAnswers={props.listAnswers}
             onListAnswerClick={props.onListAnswerClick}
     

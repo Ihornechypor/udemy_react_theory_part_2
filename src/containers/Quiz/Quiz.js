@@ -6,6 +6,7 @@ class Quiz extends Component {
 
     state = {
         activeQustion: 0,
+        answerState: null,
         quiz: [
             {   
                 id: 1,
@@ -33,12 +34,38 @@ class Quiz extends Component {
     }
 
     onListAnswerClick = (listAnswersId) =>{
-        console.log(listAnswersId)
 
-        this.setState({
-            activeQustion: this.state.activeQustion + 1
-        })
+        const question = this.state.quiz[this.state.activeQustion]
 
+        if(question.listAnswersRightId === listAnswersId){
+            this.setState({
+                answerState: {[listAnswersId]: 'success'}
+            })
+            const timeout = window.setTimeout(()=>{
+                if(this.isQuizFunished()){
+                    console.log('finiszed')
+
+                } else {
+                    this.setState({
+                        activeQustion: this.state.activeQustion + 1,
+                        answerState: null
+                    })
+                    
+                }
+
+                window.clearTimeout(timeout)
+            }, 1000)
+
+       
+        } else {
+            this.setState({
+                answerState: {[listAnswersId]: 'error'}
+            })
+        }
+    }
+
+    isQuizFunished(){
+        return this.state.activeQustion + 1 === this.state.quiz.length
     }
 
     render(){
@@ -54,6 +81,7 @@ class Quiz extends Component {
                         onListAnswerClick={this.onListAnswerClick}
                         listAnswersLen={this.state.quiz.length}
                         listAnswersNumber={this.state.activeQustion + 1}
+                        ckickedAnswerState={this.state.answerState}
                         
                     />
                 
