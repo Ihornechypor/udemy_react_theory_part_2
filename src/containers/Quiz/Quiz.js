@@ -1,10 +1,13 @@
-import React, {Component} from 'react'
-import classes from './Quiz.module.css'
-import ActiveQuiz from '../../components/ActiveQuiz/ActiveQuiz'
+import React, {Component} from 'react';
+import classes from './Quiz.module.css';
+import ActiveQuiz from '../../components/ActiveQuiz/ActiveQuiz';
+import FinishedQuiz from '../../components/FinishedQuiz/FinishedQuiz';
+
  
 class Quiz extends Component {
 
     state = {
+        isFinished: true,
         activeQustion: 0,
         answerState: null,
         quiz: [
@@ -49,7 +52,9 @@ class Quiz extends Component {
             })
             const timeout = window.setTimeout(()=>{
                 if(this.isQuizFunished()){
-                    console.log('finiszed')
+                    this.setState({
+                        isFinished: true
+                    })
 
                 } else {
                     this.setState({
@@ -58,7 +63,6 @@ class Quiz extends Component {
                     })
                     
                 }
-
                 window.clearTimeout(timeout)
             }, 1000)
 
@@ -81,15 +85,21 @@ class Quiz extends Component {
                     <h2>
                         Quiz
                     </h2>
-                    <ActiveQuiz
-                        listAnswers={this.state.quiz[this.state.activeQustion].listAnswers}
-                        listQuestion={this.state.quiz[this.state.activeQustion].listQuestion}
-                        onListAnswerClick={this.onListAnswerClick}
-                        listAnswersLen={this.state.quiz.length}
-                        listAnswersNumber={this.state.activeQustion + 1}
-                        ckickedAnswerState={this.state.answerState}
-                        
-                    />
+                    {
+                        this.state.isFinished
+                        ?  <FinishedQuiz
+                             
+                            />
+                        :  <ActiveQuiz
+                                listAnswers={this.state.quiz[this.state.activeQustion].listAnswers}
+                                listQuestion={this.state.quiz[this.state.activeQustion].listQuestion}
+                                onListAnswerClick={this.onListAnswerClick}
+                                listAnswersLen={this.state.quiz.length}
+                                listAnswersNumber={this.state.activeQustion + 1}
+                                ckickedAnswerState={this.state.answerState}
+                            />
+                    }
+
                 
                 </div>
             </div>
