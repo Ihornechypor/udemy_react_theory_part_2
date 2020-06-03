@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from './FinishedQuiz.module.css'
+import Button from '../UI/Button/Button'
 
 const FinishedQuiz = props => {
     const successCount = Object.keys(props.results).reduce((total, key)=> {
@@ -36,9 +37,8 @@ const FinishedQuiz = props => {
                 Correct {successCount} of {props.quiz.length}
             </p>
             <div>
-                <button onClick={props.onRetry}>
-                    repeat
-                </button>
+                <Button onClick={props.onRetry} type="primary"> repeat</Button>
+                <Button type="success"> Go to tests</Button>
             </div>
         </div>
     )
