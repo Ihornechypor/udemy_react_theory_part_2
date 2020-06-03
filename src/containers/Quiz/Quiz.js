@@ -7,7 +7,8 @@ import FinishedQuiz from '../../components/FinishedQuiz/FinishedQuiz';
 class Quiz extends Component {
 
     state = {
-        isFinished: true,
+        results: {}, 
+        isFinished: false,
         activeQustion: 0,
         answerState: null,
         quiz: [
@@ -45,10 +46,16 @@ class Quiz extends Component {
         }
 
         const question = this.state.quiz[this.state.activeQustion]
+        const results = this.state.results
 
         if(question.listAnswersRightId === listAnswersId){
+            if(!results[question.id]){
+                results[question.id] = 'success'
+            }
+
             this.setState({
-                answerState: {[listAnswersId]: 'success'}
+                answerState: {[listAnswersId]: 'success'},
+                results
             })
             const timeout = window.setTimeout(()=>{
                 if(this.isQuizFunished()){
@@ -68,14 +75,25 @@ class Quiz extends Component {
 
        
         } else {
+            results[question.id] = 'error'
             this.setState({
-                answerState: {[listAnswersId]: 'error'}
+                answerState: {[listAnswersId]: 'error'},
+                results
             })
         }
     }
 
     isQuizFunished(){
         return this.state.activeQustion + 1 === this.state.quiz.length
+    }
+
+    retryHandler = () => {
+        this.setState({
+            activeQustion: 0,
+            answerState: null,
+            isFinished: false,
+            results: {}
+        })
     }
 
     render(){
@@ -88,7 +106,9 @@ class Quiz extends Component {
                     {
                         this.state.isFinished
                         ?  <FinishedQuiz
-                             
+                                results={this.state.results}
+                                quiz={this.state.quiz}
+                                onRetry={this.retryHandler}
                             />
                         :  <ActiveQuiz
                                 listAnswers={this.state.quiz[this.state.activeQustion].listAnswers}
