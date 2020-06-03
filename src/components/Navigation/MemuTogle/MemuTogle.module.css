@@ -1,0 +1,18 @@
+.MemuTogle {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+    z-index: 100;
+    transition: opacity,left .22s ease-in;
+}
+
+.MemuTogle:hover {
+    opacity: .7;
+}
+
+.MemuTogle.open{
+    left: 320px;
+}
