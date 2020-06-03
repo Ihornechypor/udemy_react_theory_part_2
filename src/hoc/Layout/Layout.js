@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import classes from './Layout.module.css';
 import MemuTogle from '../../components/Navigation/MemuTogle/MemuTogle'
+import Drower from '../../components/Navigation/Drower/Drower'
 
-
+ 
 class Layout extends Component {
     state = {
         menu: false
@@ -16,6 +17,10 @@ class Layout extends Component {
     render(){
         return (  
             <div className={classes.Layout}>
+                <Drower
+                    isOpen={this.state.menu} 
+                />
+
                 <MemuTogle 
                     onTogle={this.toggleMenuHadler}
                     isOpen={this.state.menu}
