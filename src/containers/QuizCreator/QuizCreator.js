@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 
-export default class Auth extends Component {
+export default class QuizCreator extends Component {
     render() {
         return (
             <div>
                 <h1>
-                    Auth
+                    Quiz Creator
                 </h1>
             </div>
         );
