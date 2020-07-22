@@ -39,5 +39,6 @@
 
 .Drower ul li a:hover,
 .active {
-    opacity: .7;
+    opacity: .4;
+    color: red;
 }
