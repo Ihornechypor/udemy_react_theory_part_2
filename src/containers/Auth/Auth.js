@@ -44,12 +44,12 @@ export default class Auth extends Component {
 
     }
 
-    submitHandler = (e) => {
-        e.preventDefault();
+    submitHandler = (event) => {
+        event.preventDefault();
     }
 
-    onChangeHandler = (e, controlName) => {
-        console.log(`${controlName}`, e.target)
+    onChangeHandler = (event, controlName) => {
+        console.log(`${controlName}`, event.target.value)
     }
 
     renderInputs(){
@@ -65,7 +65,7 @@ export default class Auth extends Component {
                     label={control.label}
                     shouldValidate={!!control.validation}
                     errorMessage={control.errorMessage}
-                    onChage={e => this.onChangeHandler(e,controlName)}
+                    onChange={event => this.onChangeHandler(event,controlName)}
                 />
             )
         })
@@ -79,7 +79,7 @@ export default class Auth extends Component {
                         Auth
                     </h1>
                     <form onSubmit={this.submitHandler} className={classes.AuthForm}>
-                        { this.renderInputs()}
+                        { this.renderInputs() }
                         <Button
                             onClick={this.loginHandler}
                             type="success"
