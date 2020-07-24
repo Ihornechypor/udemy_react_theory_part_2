@@ -32,10 +32,7 @@ const Input = props => {
                 isInvalid(props)
                     ? <span>{props.errorMessage}</span> || 'enter right value'
                     : null
-
             }
-
-
         </div>
     )
 }
