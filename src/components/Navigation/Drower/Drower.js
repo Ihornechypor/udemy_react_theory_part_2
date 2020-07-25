@@ -19,7 +19,7 @@ class Drower extends Component {
     renderLinks() {
         return links.map((link,index)=>{
             return (
-                <li key="index">
+                <li key={index}>
                     <NavLink
                         to={link.to}
                         exact={link.exact}
