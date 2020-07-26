@@ -34,7 +34,7 @@ export default class QuizCreator extends Component {
      state = {
          quiz: [],
          isFormValid: false,
-         rightAnswerID: 1,
+         listAnswersRightId: 1,
          formControls: createFormControls()
      }
 
@@ -49,7 +49,7 @@ export default class QuizCreator extends Component {
         const questionItem = {
             question: question.value,
             id: index,
-            rightAnswerID: this.state.rightAnswerID,
+            listAnswersRightId: this.state.listAnswersRightId,
             answers: [
                 {text: option1.value, id: option1.id},
                 {text: option2.value, id: option2.id},
@@ -63,7 +63,7 @@ export default class QuizCreator extends Component {
         this.setState({
             quiz,
             isFormValid: false,
-            rightAnswerID: 1,
+            listAnswersRightId: 1,
             formControls: createFormControls()
         })
 
@@ -78,7 +78,7 @@ export default class QuizCreator extends Component {
             this.setState({
                 quiz: [],
                 isFormValid: false,
-                rightAnswerID: 1,
+                listAnswersRightId: 1,
                 formControls: createFormControls()
             })
         } catch (e) {
@@ -129,7 +129,7 @@ export default class QuizCreator extends Component {
 
     selectChangeHandler = event => {
          this.setState({
-             rightAnswerID: +event.target.value
+             listAnswersRightId: +event.target.value
          })
     }
 
@@ -137,7 +137,7 @@ export default class QuizCreator extends Component {
     render() {
         const select = <Select
             label="chose right question"
-            value={this.state.rightAnswerID}
+            value={this.state.listAnswersRightId}
             onChange={this.selectChangeHandler}
             options={[
                 {text: 1, value: 1},

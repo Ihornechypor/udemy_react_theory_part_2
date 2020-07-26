@@ -113,8 +113,8 @@ class Quiz extends Component {
                                 onRetry={this.retryHandler}
                             />
                             :  <ActiveQuiz
-                                listAnswers={this.state.quiz[this.state.activeQustion].listAnswers}
-                                listQuestion={this.state.quiz[this.state.activeQustion].listQuestion}
+                                listAnswers={this.state.quiz[this.state.activeQustion].answers}
+                                listQuestion={this.state.quiz[this.state.activeQustion].question}
                                 onListAnswerClick={this.onListAnswerClick}
                                 listAnswersLen={this.state.quiz.length}
                                 listAnswersNumber={this.state.activeQustion + 1}

@@ -17,7 +17,8 @@ const ActiveQuiz = props => (
                 {props.listAnswersNumber} of {props.listAnswersLen}
             </small>
         </p>
-        
+
+
         <ActiveAnswersList
             ckickedAnswerState={props.ckickedAnswerState}
             listAnswers={props.listAnswers}
