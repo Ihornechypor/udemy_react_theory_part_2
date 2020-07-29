@@ -10,8 +10,6 @@ const ActiveAnswersItem = props => {
         cls.push(classes[props.ckickedAnswerState])
     }
 
-    console.log(props)
-
     return (
         <li 
             className={cls.join(' ')}

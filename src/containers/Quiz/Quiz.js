@@ -47,7 +47,6 @@ class Quiz extends Component {
 
                     }
 
-                    {console.log(this.props)}
 
                 </div>
             </div>
