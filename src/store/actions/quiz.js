@@ -4,7 +4,7 @@ import {
     FETCH_QUIZES_ERROR,
     FETCH_QUIZES_START,
     FETCH_QUIZES_SUCCESS, FINISH_QUIZ, QUIZ_NEXT_QUESTION,
-    QUIZ_SET_STATE
+    QUIZ_SET_STATE, RETRY_QUIZ
 } from "./actionTypes";
 
 export function fetchQuizes() {
@@ -97,9 +97,17 @@ export function quizNextQuestion(number) {
     }
 }
 
+export function retryQuiz() {
+    return{
+        type: RETRY_QUIZ
+    }
+
+}
+
 export function quizAnswerClick(answerId) {
     return (dispatch,getState) => {
         const state = getState().quiz
+
 
         if(state.answerState){
             const key = Object.keys(state.answerState)[0];
@@ -111,7 +119,6 @@ export function quizAnswerClick(answerId) {
         const question = state.quiz[state.activeQustion]
         const results = state.results
 
-        console.log(results)
 
         if(question.listAnswersRightId === answerId){
             if(!results[question.id]){
