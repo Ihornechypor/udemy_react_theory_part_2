@@ -40,7 +40,7 @@ export default function quizReducer(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                quiz: action.quiz
+                quiz: action.quiz,
             }
         case QUIZ_SET_STATE:
             return {

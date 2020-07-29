@@ -4,6 +4,8 @@ import classes from './ActiveAnswersItem.module.css'
 
 const ActiveAnswersItem = props => {
     const cls =[classes.ActiveAnswersItem]
+
+
     if(props.ckickedAnswerState){
         cls.push(classes[props.ckickedAnswerState])
     }
