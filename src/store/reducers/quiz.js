@@ -49,6 +49,7 @@ export default function quizReducer(state = initialState, action) {
                 results: action.results
             }
         case QUIZ_NEXT_QUESTION:
+            console.log(action.number)
             return {
                 ...state,
                 answerState: null,

@@ -31,6 +31,7 @@ class Quiz extends Component {
                     </h2>
 
                     {
+
                         this.props.loading || !this.props.quiz
                         ? <Loader/>
                         : this.props.isFinished
@@ -67,6 +68,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
+
     return {
         fetchQuizById: id => dispatch(fetchQuizById(id)),
         quizAnswerClick: answerID => dispatch(quizAnswerClick(answerID))

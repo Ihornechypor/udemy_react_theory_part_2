@@ -75,11 +75,11 @@ export function fetchQuizesErorr(e) {
     }
 }
 
-export function quizSetState(answersState, result) {
+export function quizSetState(answersState, results) {
     return {
         type: QUIZ_SET_STATE,
         answersState,
-        result
+        results
     }
 
 }
@@ -90,7 +90,7 @@ export function finishQuiz() {
     }
 }
 
-export function quizNextQustion(number) {
+export function quizNextQuestion(number) {
     return {
         type: QUIZ_NEXT_QUESTION,
         number
@@ -111,6 +111,8 @@ export function quizAnswerClick(answerId) {
         const question = state.quiz[state.activeQustion]
         const results = state.results
 
+        console.log(results)
+
         if(question.listAnswersRightId === answerId){
             if(!results[question.id]){
                 results[question.id] = 'success'
@@ -118,11 +120,12 @@ export function quizAnswerClick(answerId) {
 
             dispatch(quizSetState({[answerId]: 'success'}, results))
 
+
             const timeout = window.setTimeout(()=>{
                 if(isQuizFinished(state)){
                     dispatch(finishQuiz())
                 } else {
-                    dispatch(quizNextQustion(state.activeQustion + 1))
+                    dispatch(quizNextQuestion(state.activeQustion + 1))
                 }
                 window.clearTimeout(timeout)
             }, 1000)
