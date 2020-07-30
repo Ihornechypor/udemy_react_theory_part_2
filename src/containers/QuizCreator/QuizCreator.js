@@ -40,8 +40,6 @@ class QuizCreator extends Component {
     addQuestionHandler = event =>{
         event.preventDefault();
 
-        const quiz = this.state.quiz.concat();
-
         const {question, option1,option2,option3,option4} = this.state.formControls;
 
         const questionItem = {
@@ -63,6 +61,7 @@ class QuizCreator extends Component {
             listAnswersRightId: 1,
             formControls: createFormControls()
         })
+
 
     }
 

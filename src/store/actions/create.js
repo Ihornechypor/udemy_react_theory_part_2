@@ -1,5 +1,5 @@
 import {CREATE_QUIZ_QUESTION, RESET_QUIZ_CREATION} from "./actionTypes";
-import {AxiosInstance as axios} from "axios";
+import axios from "../../axios/axios";
 
 export function createQuizQuestion(item) {
     return {
@@ -11,9 +11,7 @@ export function createQuizQuestion(item) {
 export function resetQuizCreation() {
     return {
         type: RESET_QUIZ_CREATION
-
     }
-
 }
 
 export function finishCreateQuiz() {
