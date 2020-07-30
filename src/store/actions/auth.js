@@ -44,6 +44,9 @@ export function logout() {
     return {
         type: AUTH_LOGOUT
     }
+}
+
+export function autoLogin() {
 
 }
 

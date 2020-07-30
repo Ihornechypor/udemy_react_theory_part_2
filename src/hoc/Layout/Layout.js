@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import classes from './Layout.module.css';
 import MemuTogle from '../../components/Navigation/MemuTogle/MemuTogle'
 import Drower from '../../components/Navigation/Drower/Drower'
+import {connect} from "react-redux";
 
  
 class Layout extends Component {
@@ -27,6 +28,7 @@ class Layout extends Component {
                 <Drower
                     isOpen={this.state.menu}
                     onClose={this.menuCloseHandler}
+                    isLogined={this.props.isLogined}
                 />
 
                 <MemuTogle 
@@ -41,4 +43,10 @@ class Layout extends Component {
     }
 }
 
-export default Layout
+function mapStateToProps(state) {
+    return {
+        isLogined: !!state.auth.token
+    }
+}
+
+export default connect(mapStateToProps, null)(Layout)

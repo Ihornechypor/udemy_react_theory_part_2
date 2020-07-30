@@ -3,12 +3,6 @@ import classes from './Drower.module.css'
 import {NavLink} from 'react-router-dom'
 import Backdrop from '../../UI/Backdrop/Backdrop'
 
-const links = [
-    {to: '/', label: 'List', exact: true},
-    {to: '/auth', label: 'Authorization', exact: false},
-    {to: '/quiz-creator', label: 'Quiz creator', exact: false},
-]
-
 
 class Drower extends Component {
 
@@ -16,7 +10,7 @@ class Drower extends Component {
         this.props.onClose();
     }
 
-    renderLinks() {
+    renderLinks(links) {
         return links.map((link,index)=>{
             return (
                 <li key={index}>
@@ -39,11 +33,22 @@ class Drower extends Component {
             cls.push(classes.close)
         }
 
+        const links = [
+            {to: '/', label: 'List', exact: true}
+        ]
+
+        if(this.props.isLogined) {
+            links.push({to: '/quiz-creator', label: 'Quiz creator', exact: false})
+            links.push({to: '/logout', label: 'Exit', exact: false})
+        } else {
+            links.push({to: '/auth', label: 'Authorization', exact: false})
+        }
+
         return(
             <React.Fragment>
                 <nav className={cls.join(' ')}>
                     <ul>
-                    {this.renderLinks()}
+                    {this.renderLinks(links)}
                     </ul>
                 </nav>
                 {this.props.isOpen ? <Backdrop onClick={this.props.onClose} /> : null}
